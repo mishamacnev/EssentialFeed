@@ -6,42 +6,45 @@
 //
 
 import XCTest
-@testable import EssentialFeed
+import EssentialFeed
 
 class FeedRemoteTests: XCTestCase {
-    
-    func test_HHTPClientNotInvoke() {
-        let client = HTTPClientSpy()
-        
-        XCTAssertNil(client.requestedUrl)
-    }
     
     func test_HHTPClientInvokeWithUrl() {
         let client = HTTPClientSpy()
         client.get(from: URL(string: "https://url.com")!)
-        XCTAssertNotNil(client.requestedUrl)
+        XCTAssertFalse(client.requestedUrls.isEmpty)
     }
     
-    func test_requestsDataFromUrl() {
+    func test_load_requestsDataFromUrl() {
         let url = URL(string: "https://url-3.com")!
         let (sut, client) = makeSUT(url: url)
         sut.load()
         
-        XCTAssertEqual(client.requestedUrl, url)
+        XCTAssertEqual(client.requestedUrls, [url])
     }
     
-    func test_doesNotRequestsDataFromUrl() {
+    func test_load_requestsDataTwiceFromUrl() {
+        let url = URL(string: "https://url-3.com")!
+        let (sut, client) = makeSUT(url: url)
+        sut.load()
+        sut.load()
+        
+        XCTAssertEqual(client.requestedUrls, [url, url])
+    }
+    
+    func test_init_doesNotRequestsDataFromUrl() {
         let (_, client) = makeSUT(url: URL(string: "https://url-2.com")!)
         
-        XCTAssertNil(client.requestedUrl)
+        XCTAssertTrue(client.requestedUrls.isEmpty)
     }
     
     private class HTTPClientSpy: HTTPClient {
-        func get(from url: URL) {
-            requestedUrl = url
-        }
+        var requestedUrls = [URL]()
         
-        var requestedUrl: URL?
+        func get(from url: URL) {
+            requestedUrls.append(url)
+        }
     }
     
     private func makeSUT(url: URL = URL(string: "https://url.com")!) -> (RemoteFeedLoader, HTTPClientSpy) {
@@ -50,22 +53,6 @@ class FeedRemoteTests: XCTestCase {
         return (sut, client)
     }
 }
-protocol HTTPClient {
-    func get(from url: URL)
-}
 
-class RemoteFeedLoader {
-    let client: HTTPClient
-    let url: URL
-    
-    init(client: HTTPClient, url: URL) {
-        self.client = client
-        self.url = url
-    }
-    
-    func load() {
-        client.get(from: url)
-    }
-}
 
 
