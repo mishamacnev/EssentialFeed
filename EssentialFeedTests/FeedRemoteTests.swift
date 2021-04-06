@@ -85,8 +85,8 @@ class FeedRemoteTests: XCTestCase {
         let (sut, client) = makeSUT()
         
         
-        let item1 = makeItem(id: UUID(), description: nil, location: nil, imageUrl: URL(string: "https://any.com")!)
-        let item2 = makeItem(id: UUID(), description: "some description", location: "some location", imageUrl: URL(string: "https://any2.com")!)
+        let item1 = makeItem(id: UUID(), description: nil, location: nil, imageURL: URL(string: "https://any.com")!)
+        let item2 = makeItem(id: UUID(), description: "some description", location: "some location", imageURL: URL(string: "https://any2.com")!)
         
         let items = [item1.model, item2.model]
         
@@ -118,19 +118,19 @@ class FeedRemoteTests: XCTestCase {
     
     // MARK: - Helpers
     
-    private func makeItem(id: UUID, description: String?, location: String?, imageUrl: URL) -> (model: FeedItem, json: [String: Any] ) {
+    private func makeItem(id: UUID, description: String?, location: String?, imageURL: URL) -> (model: FeedItem, json: [String: Any] ) {
         let model = FeedItem(
             id: id,
             description: description,
             location: location,
-            imageUrl: imageUrl
+            imageURL: imageURL
         )
         
         let json = [
             "id": model.id.uuidString,
             "description": model.description,
             "location": model.location,
-            "image": model.imageUrl.absoluteString,
+            "image": model.imageURL.absoluteString,
         ].compactMapValues { $0 }
         
         return (model: model, json: json)
