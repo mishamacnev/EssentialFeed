@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		197FA939261CFC9B00642300 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 197FA92F261CFC9B00642300 /* EssentialFeed.framework */; };
 		197FA93E261CFC9B00642300 /* EssentialFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197FA93D261CFC9B00642300 /* EssentialFeedTests.swift */; };
-		197FA940261CFC9B00642300 /* EssentialFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = 197FA932261CFC9B00642300 /* EssentialFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		197FA94F261CFD0F00642300 /* FeedRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197FA94B261CFD0F00642300 /* FeedRemoteTests.swift */; };
 		197FA950261CFD0F00642300 /* URLSessionHTTPClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197FA94C261CFD0F00642300 /* URLSessionHTTPClientTest.swift */; };
 		197FA951261CFD0F00642300 /* XCTestCase+MemoryLeakTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197FA94E261CFD0F00642300 /* XCTestCase+MemoryLeakTrack.swift */; };
@@ -43,7 +42,6 @@
 
 /* Begin PBXFileReference section */
 		197FA92F261CFC9B00642300 /* EssentialFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EssentialFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		197FA932261CFC9B00642300 /* EssentialFeed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EssentialFeed.h; sourceTree = "<group>"; };
 		197FA933261CFC9B00642300 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		197FA938261CFC9B00642300 /* EssentialFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		197FA93D261CFC9B00642300 /* EssentialFeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedTests.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 			children = (
 				197FA95B261CFD1B00642300 /* FeedApi */,
 				197FA956261CFD1B00642300 /* FeedFeature */,
-				197FA932261CFC9B00642300 /* EssentialFeed.h */,
 				197FA933261CFC9B00642300 /* Info.plist */,
 			);
 			path = EssentialFeed;
@@ -176,7 +173,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				197FA940261CFC9B00642300 /* EssentialFeed.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
