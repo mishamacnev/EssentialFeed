@@ -8,7 +8,7 @@
 import XCTest
 import EssentialFeed
 
-class FeedRemoteTests: XCTestCase {
+class LoadFeedFromRemoteUseCaseTests: XCTestCase {
     
     func test_HHTPClientInvokeWithUrl() {
         let client = HTTPClientSpy()
