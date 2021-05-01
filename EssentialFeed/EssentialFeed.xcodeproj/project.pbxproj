@@ -21,6 +21,8 @@
 		197FA96F261CFD6B00642300 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 197FA92F261CFC9B00642300 /* EssentialFeed.framework */; };
 		197FA978261CFDAE00642300 /* XCTestCase+MemoryLeakTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 197FA94E261CFD0F00642300 /* XCTestCase+MemoryLeakTrack.swift */; };
 		E8070DAB263C2E2600717354 /* FeedUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8070DAA263C2E2600717354 /* FeedUIComposer.swift */; };
+		E8070DAE263D4C6B00717354 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8070DAD263D4C6B00717354 /* FeedViewModel.swift */; };
+		E8070DB0263D563000717354 /* FeedImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8070DAF263D563000717354 /* FeedImageViewModel.swift */; };
 		E8281A772629CA6C00DDD1AD /* ValidateFeedCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8281A762629CA6C00DDD1AD /* ValidateFeedCacheUseCaseTests.swift */; };
 		E8281A7F262AECC000DDD1AD /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8281A7E262AECC000DDD1AD /* FeedCacheTestHelpers.swift */; };
 		E8281A8C262AEDC300DDD1AD /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8281A8B262AEDC300DDD1AD /* SharedTestHelpers.swift */; };
@@ -128,6 +130,8 @@
 		197FA96C261CFD6B00642300 /* EssentialFeedAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		197FA96E261CFD6B00642300 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8070DAA263C2E2600717354 /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
+		E8070DAD263D4C6B00717354 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		E8070DAF263D563000717354 /* FeedImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageViewModel.swift; sourceTree = "<group>"; };
 		E8281A762629CA6C00DDD1AD /* ValidateFeedCacheUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateFeedCacheUseCaseTests.swift; sourceTree = "<group>"; };
 		E8281A7E262AECC000DDD1AD /* FeedCacheTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCacheTestHelpers.swift; sourceTree = "<group>"; };
 		E8281A8B262AEDC300DDD1AD /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
@@ -311,6 +315,15 @@
 			path = Composers;
 			sourceTree = "<group>";
 		};
+		E8070DAC263D4C5F00717354 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E8070DAD263D4C6B00717354 /* FeedViewModel.swift */,
+				E8070DAF263D563000717354 /* FeedImageViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E82F3D9926355032003964FA /* EssentialFeediOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,6 +397,7 @@
 		E8DC7BE2263B547F00B85F4C /* FeedUI */ = {
 			isa = PBXGroup;
 			children = (
+				E8070DAC263D4C5F00717354 /* Models */,
 				E8070DA9263C2E1000717354 /* Composers */,
 				E8DC7BE4263B54CA00B85F4C /* Views */,
 				E8DC7BE3263B549D00B85F4C /* Controllers */,
@@ -768,7 +782,9 @@
 				E82F3E02263763B7003964FA /* UIView+Shimmering.swift in Sources */,
 				E82F3DF42635DBB3003964FA /* FeedViewController.swift in Sources */,
 				E82F3DFB26360B50003964FA /* FeedImageCell.swift in Sources */,
+				E8070DB0263D563000717354 /* FeedImageViewModel.swift in Sources */,
 				E8DC7BEF263C28FC00B85F4C /* FeedImageCellController.swift in Sources */,
+				E8070DAE263D4C6B00717354 /* FeedViewModel.swift in Sources */,
 				E8070DAB263C2E2600717354 /* FeedUIComposer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
