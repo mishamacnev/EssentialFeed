@@ -13,7 +13,7 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
     func test_HHTPClientInvokeWithUrl() {
         let client = HTTPClientSpy()
         client.get(from: URL(string: "https://url.com")!, completion: { _ in })
-        XCTAssertFalse(client.requestedUrls.isEmpty)
+        XCTAssertFalse(client.requestedURLs.isEmpty)
     }
     
     func test_load_requestsDataFromUrl() {
@@ -23,7 +23,7 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
             
         }
         
-        XCTAssertEqual(client.requestedUrls, [url])
+        XCTAssertEqual(client.requestedURLs, [url])
     }
     
     func test_load_requestsDataTwiceFromUrl() {
@@ -32,13 +32,13 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
         sut.load { _ in }
         sut.load { _ in }
         
-        XCTAssertEqual(client.requestedUrls, [url, url])
+        XCTAssertEqual(client.requestedURLs, [url, url])
     }
     
     func test_init_doesNotRequestsDataFromUrl() {
         let (_, client) = makeSUT(url: URL(string: "https://url-2.com")!)
         
-        XCTAssertTrue(client.requestedUrls.isEmpty)
+        XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_load_requestFail() {
@@ -144,28 +144,6 @@ class LoadFeedFromRemoteUseCaseTests: XCTestCase {
         let itemsJSON = ["items": items]
         let json = try! JSONSerialization.data(withJSONObject: itemsJSON)
         return json
-    }
-    
-    private class HTTPClientSpy: HTTPClient {
-        
-        private var messages = [(url: URL, completion: (HTTPClient.Result) -> ())]()
-        
-        var requestedUrls: [URL] {
-            messages.map { $0.url }
-        }
-        
-        func get(from url: URL, completion: @escaping (HTTPClient.Result) -> ()) {
-            messages.append((url, completion))
-        }
-        
-        func complete(with error: Error, at index: Int = 0) {
-            messages[index].completion(.failure(error))
-        }
-        
-        func complete(withStatusCode code: Int, data: Data, at index: Int = 0) {
-            let response = HTTPURLResponse(url: requestedUrls[index], statusCode: code, httpVersion: nil, headerFields: nil)!
-            messages[index].completion(.success((data, response)))
-        }
     }
     
     private func expect(_ sut: RemoteFeedLoader, toCompleteWith expectedResult: RemoteFeedLoader.Result, when action: () -> (), file: StaticString = #filePath, line: UInt = #line) {
