@@ -88,7 +88,7 @@ class URLSessionHTTPClientTests: XCTestCase {
         let session = URLSession(configuration: configuration)
         
         let sut = URLSessionHTTPClient(session: session)
-        trackMemoryLeak(for: sut, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
         return sut
     }
     
