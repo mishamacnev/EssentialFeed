@@ -43,10 +43,7 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     func test_load_deliversPrimaryImageOnPrimaryLoaderResult() {
         let primaryData = anyData()
         let fallbackData = anyData()
-        let primaryLoader = LoaderStub(result: .success(primaryData))
-        let fallbackLoader = LoaderStub(result: .success(fallbackData))
-        
-        let sut = FeedImageDataLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+        let sut = makeSUT(primaryResut: .success(primaryData), fallbackResult: .success(fallbackData))
         
         let _ = sut.loadImageData(from: anyURL()) { result in
             switch result {
@@ -60,10 +57,7 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     
     func test_load_deliversFallbackImageOnPrimaryLoaderFailure() {
         let fallbackData = anyData()
-        let primaryLoader = LoaderStub(result: .failure(anyNSError()))
-        let fallbackLoader = LoaderStub(result: .success(fallbackData))
-        
-        let sut = FeedImageDataLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+        let sut = makeSUT(primaryResut: .failure(anyNSError()), fallbackResult: .success(fallbackData))
         
         let _ = sut.loadImageData(from: anyURL()) { result in
             switch result {
@@ -73,6 +67,18 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
                 XCTFail("Expected successful result, got \(result) instead")
             }
         }
+    }
+    
+    // MARK: - Helpers
+    
+    private func makeSUT(primaryResut: FeedImageDataLoader.Result, fallbackResult: FeedImageDataLoader.Result, file: StaticString = #file, line: UInt = #line) -> FeedImageDataLoader {
+        let primaryLoader = LoaderStub(result: primaryResut)
+        let fallbackLoader = LoaderStub(result: fallbackResult)
+        let sut = FeedImageDataLoaderWithFallbackComposite(primary: primaryLoader, fallback: fallbackLoader)
+        trackForMemoryLeaks(primaryLoader, file: file, line: line)
+        trackForMemoryLeaks(fallbackLoader, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return sut
     }
     
     private class LoaderStub: FeedImageDataLoader {
