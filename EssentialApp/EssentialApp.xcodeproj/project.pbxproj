@@ -20,6 +20,7 @@
 		E8AE2DFD2649089A00204450 /* RemoteWithLocalFallbackFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2DFC2649089A00204450 /* RemoteWithLocalFallbackFeedLoaderTests.swift */; };
 		E8AE2DFF2649171100204450 /* FeedLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2DFE2649171100204450 /* FeedLoaderWithFallbackComposite.swift */; };
 		E8AE2E012649185700204450 /* FeedImageDataLoaderWithFallbackCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E002649185700204450 /* FeedImageDataLoaderWithFallbackCompositeTests.swift */; };
+		E8AE2E042649202700204450 /* EssentialAppTests+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E032649202700204450 /* EssentialAppTests+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		E8AE2DFC2649089A00204450 /* RemoteWithLocalFallbackFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteWithLocalFallbackFeedLoaderTests.swift; sourceTree = "<group>"; };
 		E8AE2DFE2649171100204450 /* FeedLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 		E8AE2E002649185700204450 /* FeedImageDataLoaderWithFallbackCompositeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoaderWithFallbackCompositeTests.swift; sourceTree = "<group>"; };
+		E8AE2E032649202700204450 /* EssentialAppTests+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EssentialAppTests+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 		E8AE2DDA26486FA400204450 /* EssentialAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				E8AE2E0226491FEC00204450 /* Helpers */,
 				E8AE2DDD26486FA400204450 /* Info.plist */,
 				E8AE2DFC2649089A00204450 /* RemoteWithLocalFallbackFeedLoaderTests.swift */,
 				E8AE2E002649185700204450 /* FeedImageDataLoaderWithFallbackCompositeTests.swift */,
@@ -136,6 +139,14 @@
 				E8AE2DF62648715500204450 /* EssentialFeediOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E8AE2E0226491FEC00204450 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E8AE2E032649202700204450 /* EssentialAppTests+Helpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8AE2E012649185700204450 /* FeedImageDataLoaderWithFallbackCompositeTests.swift in Sources */,
+				E8AE2E042649202700204450 /* EssentialAppTests+Helpers.swift in Sources */,
 				E8AE2DFD2649089A00204450 /* RemoteWithLocalFallbackFeedLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
