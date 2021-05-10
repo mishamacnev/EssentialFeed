@@ -45,28 +45,14 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         let fallbackData = anyData()
         let sut = makeSUT(primaryResut: .success(primaryData), fallbackResult: .success(fallbackData))
         
-        let _ = sut.loadImageData(from: anyURL()) { result in
-            switch result {
-            case let .success(receivedData):
-                XCTAssertEqual(receivedData, primaryData)
-            case .failure:
-                XCTFail("Expected successful result, got \(result) instead")
-            }
-        }
+        expect(sut, toCompleteWith: .success(primaryData))
     }
     
     func test_load_deliversFallbackImageOnPrimaryLoaderFailure() {
         let fallbackData = anyData()
         let sut = makeSUT(primaryResut: .failure(anyNSError()), fallbackResult: .success(fallbackData))
         
-        let _ = sut.loadImageData(from: anyURL()) { result in
-            switch result {
-            case let .success(receivedData):
-                XCTAssertEqual(receivedData, fallbackData)
-            case .failure:
-                XCTFail("Expected successful result, got \(result) instead")
-            }
-        }
+        expect(sut, toCompleteWith: .success(fallbackData))
     }
     
     // MARK: - Helpers
@@ -79,6 +65,24 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
         trackForMemoryLeaks(fallbackLoader, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
+    }
+    
+    private func expect(_ sut: FeedImageDataLoader, toCompleteWith expectedResult: FeedImageDataLoader.Result, file: StaticString = #filePath, line: UInt = #line) {
+        let exp = expectation(description: "Wait for load completion")
+        let _ = sut.loadImageData(from: anyURL()) { receivedResult in
+            switch (receivedResult, expectedResult) {
+            case let (.success(receivedFeed), .success(expectedFeed)):
+                XCTAssertEqual(receivedFeed, expectedFeed, file: file, line: line)
+            case (.failure, .failure):
+                break
+                
+            default:
+                XCTFail("Expected \(expectedResult) result, got \(receivedResult) instead", file: file, line: line)
+            }
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1)
     }
     
     private class LoaderStub: FeedImageDataLoader {
