@@ -7,36 +7,7 @@
 
 import XCTest
 import EssentialFeed
-
-class FeedImageDataLoaderWithFallbackComposite: FeedImageDataLoader {
-    private let primary: FeedImageDataLoader
-    private let fallback: FeedImageDataLoader
-    
-    init(primary: FeedImageDataLoader, fallback: FeedImageDataLoader) {
-        self.primary = primary
-        self.fallback = fallback
-    }
-    
-    func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> ()) -> FeedImageDataLoaderTask {
-        let task = TaskWrapper()
-        task.wrapped = primary.loadImageData(from: url) { [weak self] result in
-            switch result {
-            case .success:
-                completion(result)
-            case .failure:
-                task.wrapped = self?.fallback.loadImageData(from: url, completion: completion)
-            }
-        }
-        return task
-    }
-    
-    private class TaskWrapper: FeedImageDataLoaderTask {
-        var wrapped: FeedImageDataLoaderTask?
-        func cancel() {
-            wrapped?.cancel()
-        }
-    }
-}
+import EssentialApp
 
 class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     
@@ -92,7 +63,7 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     
     private class LoaderStub: FeedImageDataLoader {
         private let result: FeedImageDataLoader.Result
-         
+        
         init(result: FeedImageDataLoader.Result) {
             self.result = result
         }
@@ -107,15 +78,15 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     
     private class LoadImageDataTaskSub: FeedImageDataLoaderTask {
         private let completion: ((FeedImageDataLoader.Result) -> Void)
-
+        
         init(_ completion: @escaping (FeedImageDataLoader.Result) -> Void) {
             self.completion = completion
         }
-
+        
         func complete(with result: FeedImageDataLoader.Result) {
             completion(result)
         }
-
+        
         func cancel() {
             
         }
@@ -128,5 +99,5 @@ class FeedImageDataLoaderWithFallbackCompositeTests: XCTestCase {
     private func anyData() -> Data {
         Data("any data".utf8)
     }
-
+    
 }
