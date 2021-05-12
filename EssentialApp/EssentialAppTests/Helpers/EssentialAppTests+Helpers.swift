@@ -24,3 +24,11 @@ func anyNSError() -> NSError {
 func uniqueFeed() -> [FeedImage] {
     [FeedImage(id: UUID(), description: "any", location: "any", url: URL(string: "http://any-url.com")!)]
 }
+
+func anyURL() -> URL {
+    URL(string: "http://any-url.com")!
+}
+
+func anyData() -> Data {
+    Data("any data".utf8)
+}
