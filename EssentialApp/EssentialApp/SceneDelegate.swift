@@ -8,18 +8,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     private lazy var httpClient: HTTPClient = {
-            URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
-        }()
-
-        private lazy var store: FeedStore & FeedImageDataStore = {
-            try! CoreDataFeedStore(storeURL: NSPersistentContainer.defaultDirectoryURL().appendingPathComponent("feed-store.sqlite"))
-        }()
-
-        convenience init(httpClient: HTTPClient, store: FeedStore & FeedImageDataStore) {
-            self.init()
-            self.httpClient = httpClient
-            self.store = store
-        }
+        URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
+    }()
+    
+    private lazy var store: FeedStore & FeedImageDataStore = {
+        try! CoreDataFeedStore(storeURL: NSPersistentContainer.defaultDirectoryURL().appendingPathComponent("feed-store.sqlite"))
+    }()
+    
+    private lazy var localFeedLoader = {
+        LocalFeedLoader(store: store, currentDate: Date.init)
+    }()
+    
+    convenience init(httpClient: HTTPClient, store: FeedStore & FeedImageDataStore) {
+        self.init()
+        self.httpClient = httpClient
+        self.store = store
+    }
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
@@ -32,8 +36,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let remoteFeedLoader = RemoteFeedLoader(client: httpClient, url: remoteURL)
         let remoteImageLoader = RemoteFeedImageDataLoader(client: httpClient)
         
-        let localFeedLoader = LocalFeedLoader(store: store, currentDate: Date.init)
-                let localImageLoader = LocalFeedImageDataLoader(store: store)
+        
+        let localImageLoader = LocalFeedImageDataLoader(store: store)
         
         let feedViewController = UINavigationController(rootViewController: FeedUIComposer.feedComposedWith(
             feedLoader: FeedLoaderWithFallbackComposite(
@@ -53,5 +57,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         ))
         
         window?.rootViewController = feedViewController
+    }
+    
+    func sceneWillResignActive(_ scene: UIScene) {
+        localFeedLoader.validateCache { _ in }
     }
 }
