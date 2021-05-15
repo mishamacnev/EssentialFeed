@@ -31,6 +31,7 @@
 		E8AE2E16264C170100204450 /* FeedImageDataLoaderCacheDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E15264C170100204450 /* FeedImageDataLoaderCacheDecorator.swift */; };
 		E8AE2E20264C6DD300204450 /* EssentialAppUIAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E1F264C6DD300204450 /* EssentialAppUIAcceptanceTests.swift */; };
 		E8AE2E28264D485B00204450 /* DebuggingSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E27264D485B00204450 /* DebuggingSceneDelegate.swift */; };
+		E8AE2E2A264F17B100204450 /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E29264F17B100204450 /* SceneDelegateTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		E8AE2E1F264C6DD300204450 /* EssentialAppUIAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialAppUIAcceptanceTests.swift; sourceTree = "<group>"; };
 		E8AE2E21264C6DD300204450 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8AE2E27264D485B00204450 /* DebuggingSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebuggingSceneDelegate.swift; sourceTree = "<group>"; };
+		E8AE2E29264F17B100204450 /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 				E8AE2E002649185700204450 /* FeedImageDataLoaderWithFallbackCompositeTests.swift */,
 				E8AE2E07264B1FA700204450 /* FeedLoaderCacheDecoratorTests.swift */,
 				E8AE2E11264C06A100204450 /* FeedImageDataLoaderCacheDecoratorTests.swift */,
+				E8AE2E29264F17B100204450 /* SceneDelegateTests.swift */,
 			);
 			path = EssentialAppTests;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				E8AE2E12264C06A100204450 /* FeedImageDataLoaderCacheDecoratorTests.swift in Sources */,
 				E8AE2E0A264B224900204450 /* FeedLoaderStub.swift in Sources */,
 				E8AE2E042649202700204450 /* EssentialAppTests+Helpers.swift in Sources */,
+				E8AE2E2A264F17B100204450 /* SceneDelegateTests.swift in Sources */,
 				E8AE2E0C264B235500204450 /* XCTestCase+FeedLoader.swift in Sources */,
 				E8AE2DFD2649089A00204450 /* RemoteWithLocalFallbackFeedLoaderTests.swift in Sources */,
 				E8AE2E08264B1FA700204450 /* FeedLoaderCacheDecoratorTests.swift in Sources */,
