@@ -345,6 +345,8 @@ final class FeedUIIntegrationTests: XCTestCase {
         feed.enumerated().forEach { index, image in
             assertThat(sut, hasViewConfiguredFor: image, at: index, file: file, line: line)
         }
+        
+        executeRunLoopToCleanUpReferences()
     }
     
     private func assertThat(_ sut: FeedViewController, hasViewConfiguredFor image: FeedImage, at index: Int, file: StaticString = #file, line: UInt = #line) {
@@ -360,6 +362,10 @@ final class FeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(cell.locationText, image.location, "Expected location text to be \(String(describing: image.location)) for image view at index \(index)", file: file, line: line)
         
         XCTAssertEqual(cell.descriptionText, image.description, "Expected description text to be \(String(describing: image.description)) for image view at index \(index)", file: file, line: line)
+    }
+    
+    private func executeRunLoopToCleanUpReferences() {
+        RunLoop.current.run(until: Date())
     }
     
     private func makeImage(description: String? = nil, location: String? = nil, url: URL = URL(string: "http://any-url.com")!) -> FeedImage {
