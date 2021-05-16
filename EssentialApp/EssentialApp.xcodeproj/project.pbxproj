@@ -36,6 +36,7 @@
 		E8AE2E4426501E0800204450 /* FeedViewController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E4226501E0800204450 /* FeedViewController+TestHelpers.swift */; };
 		E8AE2E4626501E1200204450 /* FeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E4526501E1200204450 /* FeedUIIntegrationTests.swift */; };
 		E8AE2E482650215C00204450 /* FeedAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E472650215C00204450 /* FeedAcceptanceTests.swift */; };
+		E8AE2E55265110A900204450 /* UIView+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E54265110A900204450 /* UIView+TestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		E8AE2E4226501E0800204450 /* FeedViewController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewController+TestHelpers.swift"; sourceTree = "<group>"; };
 		E8AE2E4526501E1200204450 /* FeedUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIIntegrationTests.swift; sourceTree = "<group>"; };
 		E8AE2E472650215C00204450 /* FeedAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAcceptanceTests.swift; sourceTree = "<group>"; };
+		E8AE2E54265110A900204450 /* UIView+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+TestHelpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				E8AE2E09264B224900204450 /* FeedLoaderStub.swift */,
 				E8AE2E0B264B235500204450 /* XCTestCase+FeedLoader.swift */,
 				E8AE2E13264C07D200204450 /* XCTestCase+FeedImageDataLoader.swift */,
+				E8AE2E54265110A900204450 /* UIView+TestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				E8AE2E042649202700204450 /* EssentialAppTests+Helpers.swift in Sources */,
 				E8AE2E2A264F17B100204450 /* SceneDelegateTests.swift in Sources */,
 				E8AE2E4426501E0800204450 /* FeedViewController+TestHelpers.swift in Sources */,
+				E8AE2E55265110A900204450 /* UIView+TestHelpers.swift in Sources */,
 				E8AE2E0C264B235500204450 /* XCTestCase+FeedLoader.swift in Sources */,
 				E8AE2E4326501E0800204450 /* FeedViewControllerTests+Localization.swift in Sources */,
 				E8AE2E482650215C00204450 /* FeedAcceptanceTests.swift in Sources */,
