@@ -379,6 +379,7 @@
 				E84B89652657F0C00058F768 /* SharedAPI */,
 				E84B89662657F11A0058F768 /* SharedAPIInfra */,
 				E84B896226545C800058F768 /* ImageCommentsFeature */,
+				E84B896B2657F2C70058F768 /* ImageCommentsAPI */,
 				E8AE2D302646880400204450 /* FeedPresentation */,
 				E852B55A2623387C006630CF /* FeedCache */,
 				197FA956261CFD1B00642300 /* FeedFeature */,
@@ -498,6 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				E84B896A2657F1E20058F768 /* Helpers */,
+				197FA94C261CFD0F00642300 /* URLSessionHTTPClientTest.swift */,
 			);
 			path = SharedAPIInfra;
 			sourceTree = "<group>";
@@ -508,6 +510,23 @@
 				E8AE2D4C2647E25900204450 /* URLProtocolStub.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E84B896B2657F2C70058F768 /* ImageCommentsAPI */ = {
+			isa = PBXGroup;
+			children = (
+				E8AE2E8A26531F1B00204450 /* RemoteImageCommentsLoader.swift */,
+				E8AE2E8C26531FD100204450 /* ImageCommentsMapper.swift */,
+			);
+			path = ImageCommentsAPI;
+			sourceTree = "<group>";
+		};
+		E84B896C2657F3110058F768 /* ImageCommentsAPI */ = {
+			isa = PBXGroup;
+			children = (
+				E8AE2E8826531DC700204450 /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
+			);
+			path = ImageCommentsAPI;
 			sourceTree = "<group>";
 		};
 		E8521A0426248C77006DE18E /* Helpers */ = {
@@ -591,8 +610,6 @@
 				E852B565262371C6006630CF /* RemoteFeedItem.swift */,
 				E8AE2D422647DD2E00204450 /* RemoteFeedImageDataLoader.swift */,
 				E8AE2E5E26511B5800204450 /* Info.plist */,
-				E8AE2E8A26531F1B00204450 /* RemoteImageCommentsLoader.swift */,
-				E8AE2E8C26531FD100204450 /* ImageCommentsMapper.swift */,
 			);
 			path = EssentialFeedAPI;
 			sourceTree = "<group>";
@@ -600,13 +617,12 @@
 		E8AE2E6726511B5800204450 /* EssentialFeedAPITests */ = {
 			isa = PBXGroup;
 			children = (
+				E8AE2E6A26511B5800204450 /* Info.plist */,
+				E84B896C2657F3110058F768 /* ImageCommentsAPI */,
 				E84B89672657F1780058F768 /* SharedAPI */,
 				E84B89692657F1B80058F768 /* SharedAPIInfra */,
 				197FA94B261CFD0F00642300 /* LoadFeedFromRemoteUseCaseTests.swift */,
-				197FA94C261CFD0F00642300 /* URLSessionHTTPClientTest.swift */,
 				E8AE2D442647DE3400204450 /* LoadFeedImageDataFromRemoteUseCaseTests.swift */,
-				E8AE2E6A26511B5800204450 /* Info.plist */,
-				E8AE2E8826531DC700204450 /* LoadImageCommentsFromRemoteUseCaseTests.swift */,
 			);
 			path = EssentialFeedAPITests;
 			sourceTree = "<group>";
