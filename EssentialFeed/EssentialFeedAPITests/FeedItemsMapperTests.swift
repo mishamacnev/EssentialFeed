@@ -66,16 +66,4 @@ class FeedItemsMapperTests: XCTestCase {
     private func failure(_ error: RemoteFeedLoader.Error) -> RemoteFeedLoader.Result {
         return .failure(error)
     }
-    
-    private func makeItemsJSON(_ items: [[String: Any]]) -> Data {
-        let itemsJSON = ["items": items]
-        let json = try! JSONSerialization.data(withJSONObject: itemsJSON)
-        return json
-    }
-}
-
-private extension HTTPURLResponse {
-    convenience init(statusCode: Int) {
-        self.init(url: anyURL(), statusCode: statusCode, httpVersion: nil, headerFields: nil)!
-    }
 }
