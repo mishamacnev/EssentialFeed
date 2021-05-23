@@ -14,7 +14,7 @@ public final class FeedUIComposer {
     
     public static func feedComposedWith(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) -> FeedViewController {
         
-        let presentationAdapter = FeedLoaderPresentationAdapter(feedLoader: MainQueueDispatchDecorator(decoratee: feedLoader))
+        let presentationAdapter = LoadResourcePresentationAdapter<[FeedImage], FeedViewAdapter>(loader: MainQueueDispatchDecorator(decoratee: feedLoader))
         let feedController = FeedViewController.makeWith(
             delegate: presentationAdapter,
             title: FeedPresenter.title
@@ -91,26 +91,31 @@ private final class FeedViewAdapter: ResourceView {
     }
 }
 
-private final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
-    private let feedLoader: FeedLoader
-    var presenter: LoadResourcePresenter<[FeedImage], FeedViewAdapter>?
+private final class LoadResourcePresentationAdapter<Resource, View: ResourceView> {
+    private let loader: FeedLoader
+    var presenter: LoadResourcePresenter<Resource, View>?
     
-    init(feedLoader: FeedLoader) {
-        self.feedLoader = feedLoader
+    init(loader: FeedLoader) {
+        self.loader = loader
     }
     
-    func didRequestFeedReefresh() {
+    func loadResource() {
         presenter?.didStartLoading()
         
-        feedLoader.load { [weak self] result in
+        loader.load { [weak self] result in
             switch result {
-            case let .success(feed):
-                self?.presenter?.didFinishLoading(with: feed)
-                
+            case let .success(resource):
+                self?.presenter?.didFinishLoading(with: resource as! Resource)
             case let .failure(error):
                 self?.presenter?.didFinishLoading(with: error)
             }
         }
+    }
+}
+
+extension LoadResourcePresentationAdapter: FeedViewControllerDelegate {
+    func didRequestFeedReefresh() {
+        loadResource()
     }
 }
 
