@@ -16,7 +16,7 @@ class FeedItemsMapperTests: XCTestCase {
         }
     }
     
-    func test_map_throwsErrorOn200ResponseWithInvalidJSON() throws {
+    func test_map_throwsErrorOn200ResponseWithInvalidJSON() {
         let invalidJSON = Data("invalid json".utf8)
         
         XCTAssertThrowsError(
@@ -61,9 +61,5 @@ class FeedItemsMapperTests: XCTestCase {
         ].compactMapValues { $0 }
         
         return (model: model, json: json)
-    }
-    
-    private func failure(_ error: RemoteFeedLoader.Error) -> RemoteFeedLoader.Result {
-        return .failure(error)
     }
 }
