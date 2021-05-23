@@ -12,7 +12,7 @@ public final class RemoteLoader<Resource> {
         case invalidData
     }
     
-    public typealias Result = Swift.Result<Resource, Error>
+    public typealias Result = Swift.Result<Resource, Swift.Error>
     public typealias Mapper = (Data, HTTPURLResponse) throws -> Resource
     
     public init(client: HTTPClient, url: URL, mapper: @escaping Mapper) {

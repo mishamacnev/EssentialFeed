@@ -52,6 +52,13 @@
             BlueprintName = "EssentialApp"
             ReferencedContainer = "container:EssentialApp.xcodeproj">
          </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E8AE2E5A26511B5800204450"
+            BuildableName = "EssentialFeedAPI.framework"
+            BlueprintName = "EssentialFeedAPI"
+            ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
+         </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
          <TestableReference
