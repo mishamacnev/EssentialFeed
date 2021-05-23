@@ -20,10 +20,11 @@ public final class FeedUIComposer {
             title: FeedPresenter.title
         )
         
-        presentationAdapter.presenter = FeedPresenter(
-            feedView: FeedViewAdapter(controller: feedController, imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)),
+        presentationAdapter.presenter = LoadResourcePresenter(
+            resourceView: FeedViewAdapter(controller: feedController, imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)),
             loadingView: WeakRefVirtualProxy(feedController),
-            errorView: WeakRefVirtualProxy(feedController)
+            errorView: WeakRefVirtualProxy(feedController),
+            mapper: FeedPresenter.map
         )
         return feedController
     }
@@ -67,7 +68,7 @@ extension WeakRefVirtualProxy: FeedImageView where T: FeedImageView, T.Image == 
     }
 }
 
-private final class FeedViewAdapter: FeedView {
+private final class FeedViewAdapter: ResourceView {
     private weak var controller: FeedViewController?
     private let imageLoader: FeedImageDataLoader
     
@@ -92,22 +93,22 @@ private final class FeedViewAdapter: FeedView {
 
 private final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
     private let feedLoader: FeedLoader
-    var presenter: FeedPresenter?
+    var presenter: LoadResourcePresenter<[FeedImage], FeedViewAdapter>?
     
     init(feedLoader: FeedLoader) {
         self.feedLoader = feedLoader
     }
     
     func didRequestFeedReefresh() {
-        presenter?.didStartLoadingFeed()
+        presenter?.didStartLoading()
         
         feedLoader.load { [weak self] result in
             switch result {
             case let .success(feed):
-                self?.presenter?.didFinishLoadingFeed(with: feed)
+                self?.presenter?.didFinishLoading(with: feed)
                 
             case let .failure(error):
-                self?.presenter?.didFinishLoadingFeed(with: error)
+                self?.presenter?.didFinishLoading(with: error)
             }
         }
     }
