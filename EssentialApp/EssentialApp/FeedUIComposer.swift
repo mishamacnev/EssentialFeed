@@ -13,12 +13,14 @@ import EssentialFeediOS
 public final class FeedUIComposer {
     private init() {}
     
+    private typealias FeedPresentationAdapter = LoadResourcePresentationAdapter<[FeedImage], FeedViewAdapter>
+    
     public static func feedComposedWith(
         feedLoader: @escaping () -> FeedLoader.Publisher,
         imageLoader: @escaping (URL) -> FeedImageDataLoader.Publisher
     ) -> FeedViewController {
         
-        let presentationAdapter = LoadResourcePresentationAdapter<[FeedImage], FeedViewAdapter>(loader: feedLoader)
+        let presentationAdapter = FeedPresentationAdapter(loader: feedLoader)
         let feedController = FeedViewController.makeWith(
             delegate: presentationAdapter,
             title: FeedPresenter.title
@@ -76,6 +78,8 @@ private final class FeedViewAdapter: ResourceView {
     private weak var controller: FeedViewController?
     private let imageLoader: (URL) -> FeedImageDataLoader.Publisher
     
+    private typealias ImageDataPresentationAdapter = LoadResourcePresentationAdapter<Data, WeakRefVirtualProxy<FeedImageCellController>>
+    
     init(controller: FeedViewController, imageLoader: @escaping (URL) -> FeedImageDataLoader.Publisher) {
         self.controller = controller
         self.imageLoader = imageLoader
@@ -84,7 +88,7 @@ private final class FeedViewAdapter: ResourceView {
     func display(_ viewModel: FeedViewModel) {
         controller?.display(viewModel.feed.map { model in
             
-            let adapter = LoadResourcePresentationAdapter<Data, WeakRefVirtualProxy<FeedImageCellController>>(loader: { [imageLoader] in
+            let adapter = ImageDataPresentationAdapter(loader: { [imageLoader] in
                 imageLoader(model.url)
             })
             
