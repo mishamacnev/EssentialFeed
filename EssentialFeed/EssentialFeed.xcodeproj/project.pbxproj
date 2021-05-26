@@ -38,6 +38,7 @@
 		E8AC9A83265E711500DA0AA0 /* ImageCommentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC9A82265E711500DA0AA0 /* ImageCommentsPresenter.swift */; };
 		E8AC9A87265E74CC00DA0AA0 /* ImageCommentsLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC9A86265E74CC00DA0AA0 /* ImageCommentsLocalizationTests.swift */; };
 		E8AC9A88265E753D00DA0AA0 /* ImageComments.strings in Resources */ = {isa = PBXBuildFile; fileRef = E8AC9A8A265E753D00DA0AA0 /* ImageComments.strings */; };
+		E8AC9A8F265E878000DA0AA0 /* FeedImageDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC9A8E265E878000DA0AA0 /* FeedImageDataMapper.swift */; };
 		E8AE2D322646881F00204450 /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2D312646881F00204450 /* FeedPresenter.swift */; };
 		E8AE2D332646890400204450 /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = E8AE2D2D2646865F00204450 /* Feed.strings */; };
 		E8AE2D352646893E00204450 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2D342646893E00204450 /* FeedViewModel.swift */; };
@@ -238,6 +239,7 @@
 		E8AC9A89265E753D00DA0AA0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ImageComments.strings; sourceTree = "<group>"; };
 		E8AC9A8B265E754700DA0AA0 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/ImageComments.strings; sourceTree = "<group>"; };
 		E8AC9A8D265E754900DA0AA0 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/ImageComments.strings"; sourceTree = "<group>"; };
+		E8AC9A8E265E878000DA0AA0 /* FeedImageDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataMapper.swift; sourceTree = "<group>"; };
 		E8AE2D2C2646865F00204450 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Feed.strings; sourceTree = "<group>"; };
 		E8AE2D2E2646866300204450 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Feed.strings; sourceTree = "<group>"; };
 		E8AE2D2F2646866400204450 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Feed.strings"; sourceTree = "<group>"; };
@@ -663,6 +665,7 @@
 				197FA958261CFD1B00642300 /* FeedItemsMapper.swift */,
 				E8AE2D422647DD2E00204450 /* RemoteFeedImageDataLoader.swift */,
 				E8AE2E5E26511B5800204450 /* Info.plist */,
+				E8AC9A8E265E878000DA0AA0 /* FeedImageDataMapper.swift */,
 			);
 			path = EssentialFeedAPI;
 			sourceTree = "<group>";
@@ -1198,6 +1201,7 @@
 			files = (
 				E8AE2E7B26511BEE00204450 /* FeedItemsMapper.swift in Sources */,
 				E8FE016226597818000A6CB2 /* RemoteLoader.swift in Sources */,
+				E8AC9A8F265E878000DA0AA0 /* FeedImageDataMapper.swift in Sources */,
 				E8AE2E7726511BEE00204450 /* RemoteFeedImageDataLoader.swift in Sources */,
 				E8AE2E7D26511C2C00204450 /* HTTPURLResponse+StatusCode.swift in Sources */,
 				E8AE2E7826511BEE00204450 /* URLSessionHTTPClient.swift in Sources */,
