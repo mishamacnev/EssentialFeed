@@ -71,7 +71,7 @@ public final class ErrorView: UIButton {
     private func hideMessage() {
         setTitle(nil, for: .normal)
         alpha = 0
-        contentEdgeInsets = .init(top: -2.5, left: 0, bottom: -2.5, right: 0)
+        contentEdgeInsets = .init(top: -11, left: 0, bottom: -11, right: 0)
         onHide?()
     }
 }
