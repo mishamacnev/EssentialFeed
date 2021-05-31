@@ -104,6 +104,7 @@
 		E8F67AB2266401B100D12B95 /* LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = E8F67AB1266401B100D12B95 /* LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png */; };
 		E8F67AB4266403B800D12B95 /* IMAGE_COMMENTS_light_extraExtraExtraLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = E8F67AB3266403B800D12B95 /* IMAGE_COMMENTS_light_extraExtraExtraLarge.png */; };
 		E8F67AB62664057500D12B95 /* FEED_WITH_CONTENT_light_extraExtraExtraLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = E8F67AB52664057500D12B95 /* FEED_WITH_CONTENT_light_extraExtraExtraLarge.png */; };
+		E8F67AB826658EC200D12B95 /* UIView+Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F67AB726658EC200D12B95 /* UIView+Container.swift */; };
 		E8FE016126597809000A6CB2 /* RemoteLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FE015C2659761C000A6CB2 /* RemoteLoaderTests.swift */; };
 		E8FE016226597818000A6CB2 /* RemoteLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8FE015E26597709000A6CB2 /* RemoteLoader.swift */; };
 		E8FE0165265A5936000A6CB2 /* EssentialFeedAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8AE2E5B26511B5800204450 /* EssentialFeedAPI.framework */; };
@@ -320,6 +321,7 @@
 		E8F67AB1266401B100D12B95 /* LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LIST_WITH_ERROR_MESSAGE_light_extraExtraExtraLarge.png; sourceTree = "<group>"; };
 		E8F67AB3266403B800D12B95 /* IMAGE_COMMENTS_light_extraExtraExtraLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMAGE_COMMENTS_light_extraExtraExtraLarge.png; sourceTree = "<group>"; };
 		E8F67AB52664057500D12B95 /* FEED_WITH_CONTENT_light_extraExtraExtraLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FEED_WITH_CONTENT_light_extraExtraExtraLarge.png; sourceTree = "<group>"; };
+		E8F67AB726658EC200D12B95 /* UIView+Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Container.swift"; sourceTree = "<group>"; };
 		E8FE015C2659761C000A6CB2 /* RemoteLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLoaderTests.swift; sourceTree = "<group>"; };
 		E8FE015E26597709000A6CB2 /* RemoteLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteLoader.swift; sourceTree = "<group>"; };
 		E8FE0167265A8BB3000A6CB2 /* LoadResourcePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadResourcePresenterTests.swift; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 				E8070DBD263FF1D700717354 /* UITableView+Dequeueing.swift */,
 				E8DFC62026448DBD0091F22A /* UIRefreshControl+Helpers.swift */,
 				E8AE2E4E26506BB400204450 /* UITableView+HeaderSizing.swift */,
+				E8F67AB726658EC200D12B95 /* UIView+Container.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1349,6 +1352,7 @@
 				E8AE2E4F26506BB400204450 /* UITableView+HeaderSizing.swift in Sources */,
 				E82F3E02263763B7003964FA /* UIView+Shimmering.swift in Sources */,
 				E8070DBE263FF1D700717354 /* UITableView+Dequeueing.swift in Sources */,
+				E8F67AB826658EC200D12B95 /* UIView+Container.swift in Sources */,
 				E8F67AB02663CCE000D12B95 /* CellController.swift in Sources */,
 				E8DFC62126448DBD0091F22A /* UIRefreshControl+Helpers.swift in Sources */,
 				E82F3DF42635DBB3003964FA /* ListViewController.swift in Sources */,
