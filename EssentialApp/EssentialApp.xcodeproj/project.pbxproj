@@ -32,7 +32,7 @@
 		E8AE2E2A264F17B100204450 /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E29264F17B100204450 /* SceneDelegateTests.swift */; };
 		E8AE2E3F26501DE400204450 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E3D26501DE400204450 /* MainQueueDispatchDecorator.swift */; };
 		E8AE2E4026501DE400204450 /* FeedUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E3E26501DE400204450 /* FeedUIComposer.swift */; };
-		E8AE2E4426501E0800204450 /* FeedViewController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E4226501E0800204450 /* FeedViewController+TestHelpers.swift */; };
+		E8AE2E4426501E0800204450 /* ListViewController+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E4226501E0800204450 /* ListViewController+TestHelpers.swift */; };
 		E8AE2E4626501E1200204450 /* FeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E4526501E1200204450 /* FeedUIIntegrationTests.swift */; };
 		E8AE2E482650215C00204450 /* FeedAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E472650215C00204450 /* FeedAcceptanceTests.swift */; };
 		E8AE2E55265110A900204450 /* UIView+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2E54265110A900204450 /* UIView+TestHelpers.swift */; };
@@ -99,7 +99,7 @@
 		E8AE2E29264F17B100204450 /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 		E8AE2E3D26501DE400204450 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 		E8AE2E3E26501DE400204450 /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
-		E8AE2E4226501E0800204450 /* FeedViewController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewController+TestHelpers.swift"; sourceTree = "<group>"; };
+		E8AE2E4226501E0800204450 /* ListViewController+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListViewController+TestHelpers.swift"; sourceTree = "<group>"; };
 		E8AE2E4526501E1200204450 /* FeedUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIIntegrationTests.swift; sourceTree = "<group>"; };
 		E8AE2E472650215C00204450 /* FeedAcceptanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedAcceptanceTests.swift; sourceTree = "<group>"; };
 		E8AE2E54265110A900204450 /* UIView+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+TestHelpers.swift"; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 		E8AE2E0226491FEC00204450 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				E8AE2E4226501E0800204450 /* FeedViewController+TestHelpers.swift */,
+				E8AE2E4226501E0800204450 /* ListViewController+TestHelpers.swift */,
 				E8AE2E032649202700204450 /* EssentialAppTests+Helpers.swift */,
 				E8AE2E09264B224900204450 /* FeedLoaderStub.swift */,
 				E8AE2E0B264B235500204450 /* XCTestCase+FeedLoader.swift */,
@@ -345,7 +345,7 @@
 				E8F67AC0266BAD6500D12B95 /* CommentsUIIntegrationTests.swift in Sources */,
 				E8AE2E042649202700204450 /* EssentialAppTests+Helpers.swift in Sources */,
 				E8AE2E2A264F17B100204450 /* SceneDelegateTests.swift in Sources */,
-				E8AE2E4426501E0800204450 /* FeedViewController+TestHelpers.swift in Sources */,
+				E8AE2E4426501E0800204450 /* ListViewController+TestHelpers.swift in Sources */,
 				E8AE2E55265110A900204450 /* UIView+TestHelpers.swift in Sources */,
 				E8AE2E0C264B235500204450 /* XCTestCase+FeedLoader.swift in Sources */,
 				E8AE2E482650215C00204450 /* FeedAcceptanceTests.swift in Sources */,
