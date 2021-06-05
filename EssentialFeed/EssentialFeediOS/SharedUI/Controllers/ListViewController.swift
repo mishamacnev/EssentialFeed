@@ -2,16 +2,16 @@
 import UIKit
 import EssentialFeed
 
-final public class ListViewController: UITableViewController, UITableViewDataSourcePrefetching, ResourceLoadingView, ResourceErrorView {
+public final class ListViewController: UITableViewController, UITableViewDataSourcePrefetching, ResourceLoadingView, ResourceErrorView {
     private(set) public var errorView = ErrorView()
     
-    public var onRefresh: (() -> Void)?
-    
     private lazy var dataSource: UITableViewDiffableDataSource<Int, CellController> = {
-        .init(tableView: tableView) { tableView, index, controller in
+        .init(tableView: tableView) { (tableView, index, controller) in
             controller.dataSource.tableView(tableView, cellForRowAt: index)
         }
     }()
+
+    public var onRefresh: (() -> Void)?
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ final public class ListViewController: UITableViewController, UITableViewDataSou
     
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+
         tableView.sizeTableHeaderToFit()
     }
     
@@ -54,7 +54,7 @@ final public class ListViewController: UITableViewController, UITableViewDataSou
         snapshot.appendItems(cellControllers, toSection: 0)
         dataSource.apply(snapshot)
     }
-    
+
     public func display(_ viewModel: ResourceLoadingViewModel) {
         refreshControl?.update(isRefreshing: viewModel.isLoading)
     }

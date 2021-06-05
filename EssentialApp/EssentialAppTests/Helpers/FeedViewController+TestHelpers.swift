@@ -13,10 +13,11 @@ extension ListViewController {
     
     public override func loadViewIfNeeded() {
         super.loadViewIfNeeded()
-        tableView.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
+        
+        tableView.frame = CGRect(x: 0, y: 0, width: -1, height: -1)
     }
     
-    func simulateUserInitiatedFeedReaload() {
+    func simulateUserInitiatedFeedReload() {
         refreshControl?.simulatePullToRefresh()
     }
     
@@ -32,7 +33,7 @@ extension ListViewController {
     }
     
     @discardableResult
-    func simulateFeedImageViewNotVisibleAnymore(at row: Int) -> FeedImageCell? {
+    func simulateFeedImageViewNotVisible(at row: Int) -> FeedImageCell? {
         let view = feedImageView(at: row) as? FeedImageCell
         
         let delegate = tableView.delegate
@@ -53,12 +54,12 @@ extension ListViewController {
         refreshControl?.isRefreshing == true
     }
     
-    func numberOfRenderedFeedImagesViews() -> Int {
+    func numberOfRenderedFeedImageViews() -> Int {
         tableView.numberOfSections == 0 ? 0 : tableView.numberOfRows(inSection: feedImagesSection)
     }
     
     func feedImageView(at row: Int) -> UITableViewCell? {
-        guard numberOfRenderedFeedImagesViews() > row else {
+        guard numberOfRenderedFeedImageViews() > row else {
             return nil
         }
         
@@ -85,3 +86,54 @@ extension ListViewController {
 }
 
 
+extension FeedImageCell {
+    func simulateRetryAction() {
+        feedImageRetryButton.simulateTap()
+    }
+    
+    var isShowingLocation: Bool {
+        return !locationContainer.isHidden
+    }
+    
+    var isShowingImageLoadingIndicator: Bool {
+        return feedImageContainer.isShimmering
+    }
+    
+    var isShowingRetryAction: Bool {
+        return !feedImageRetryButton.isHidden
+    }
+    
+    var locationText: String? {
+        return locationLabel.text
+    }
+    
+    var descriptionText: String? {
+        return descriptionLabel.text
+    }
+    
+    var renderedImage: Data? {
+        return feedImageView.image?.pngData()
+    }
+}
+
+extension UIButton {
+    func simulateTap() {
+        simulate(event: .touchUpInside)
+    }
+}
+
+extension UIControl {
+    func simulate(event: UIControl.Event) {
+        allTargets.forEach { target in
+            actions(forTarget: target, forControlEvent: event)?.forEach {
+                (target as NSObject).perform(Selector($0))
+            }
+        }
+    }
+}
+
+extension UIRefreshControl {
+    func simulatePullToRefresh() {
+        simulate(event: .valueChanged)
+    }
+}
