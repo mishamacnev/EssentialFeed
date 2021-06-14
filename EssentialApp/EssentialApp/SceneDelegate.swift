@@ -1,4 +1,5 @@
 
+import os
 import UIKit
 import CoreData
 import Combine
@@ -12,11 +13,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         URLSessionHTTPClient(session: URLSession(configuration: .ephemeral))
     }()
     
+    private lazy var logger = Logger(subsystem: "company.EssentialApp", category: "main")
+    
     private lazy var store: FeedStore & FeedImageDataStore = {
         do {
             return try CoreDataFeedStore(storeURL: NSPersistentContainer.defaultDirectoryURL().appendingPathComponent("feed-store.sqlite"))
         } catch {
             assertionFailure("Failed to instantiate CoreData store with error: \(error.localizedDescription)")
+            logger.fault("Failed to instantiate CoreData store with error: \(error.localizedDescription)")
             return NullStore()
         }
     }()
