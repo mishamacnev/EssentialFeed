@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E8330E4F2677DE560098D9EA /* NullStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8330E4E2677DE560098D9EA /* NullStore.swift */; };
 		E8AC9A7B265E653000DA0AA0 /* CombineHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AC9A7A265E653000DA0AA0 /* CombineHelpers.swift */; };
 		E8AE2DC526486FA300204450 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2DC426486FA300204450 /* AppDelegate.swift */; };
 		E8AE2DC726486FA300204450 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AE2DC626486FA300204450 /* SceneDelegate.swift */; };
@@ -72,6 +73,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E8330E4E2677DE560098D9EA /* NullStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NullStore.swift; sourceTree = "<group>"; };
 		E8AC9A7A265E653000DA0AA0 /* CombineHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineHelpers.swift; sourceTree = "<group>"; };
 		E8AE2DC126486FA300204450 /* EssentialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EssentialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8AE2DC426486FA300204450 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				E8F67ABB266BABAA00D12B95 /* FeedViewAdapter.swift */,
 				E8F67ABD266BAC0600D12B95 /* WeakRefVirtualProxy.swift */,
 				E8F67AC1266BAF9C00D12B95 /* CommentsUIComposer.swift */,
+				E8330E4E2677DE560098D9EA /* NullStore.swift */,
 			);
 			path = EssentialApp;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				E8AE2E062649239B00204450 /* FeedImageDataLoaderWithFallbackComposite.swift in Sources */,
 				E8AE2E16264C170100204450 /* FeedImageDataLoaderCacheDecorator.swift in Sources */,
 				E8F67AC2266BAF9C00D12B95 /* CommentsUIComposer.swift in Sources */,
+				E8330E4F2677DE560098D9EA /* NullStore.swift in Sources */,
 				E8F67ABE266BAC0600D12B95 /* WeakRefVirtualProxy.swift in Sources */,
 				E8AE2E4026501DE400204450 /* FeedUIComposer.swift in Sources */,
 			);
