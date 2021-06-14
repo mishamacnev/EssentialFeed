@@ -28,6 +28,7 @@
 		E82F3DF42635DBB3003964FA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82F3DF32635DBB3003964FA /* ListViewController.swift */; };
 		E82F3DFB26360B50003964FA /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82F3DFA26360B50003964FA /* FeedImageCell.swift */; };
 		E82F3E02263763B7003964FA /* UIView+Shimmering.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82F3E01263763B7003964FA /* UIView+Shimmering.swift */; };
+		E8330E4D267776BB0098D9EA /* FeedCacheTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8281A7E262AECC000DDD1AD /* FeedCacheTestHelpers.swift */; };
 		E84B896426545CC20058F768 /* ImageComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84B896326545CC20058F768 /* ImageComment.swift */; };
 		E8521A0626248C97006DE18E /* FeedStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8521A0526248C97006DE18E /* FeedStoreSpy.swift */; };
 		E852B5532622DAD2006630CF /* CacheFeedUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E852B5522622DAD2006630CF /* CacheFeedUseCaseTest.swift */; };
@@ -1444,6 +1445,7 @@
 				E8AE2E7F26511C5800204450 /* FeedItemsMapperTests.swift in Sources */,
 				E8F67ACA266C0D4700D12B95 /* ImageCommentsEndpointTests.swift in Sources */,
 				E8AE2E8426511D6400204450 /* SharedTestHelpers.swift in Sources */,
+				E8330E4D267776BB0098D9EA /* FeedCacheTestHelpers.swift in Sources */,
 				E8AE2E8026511C5800204450 /* URLSessionHTTPClientTest.swift in Sources */,
 				E8F67AC8266C0D2400D12B95 /* FeedEndpointTests.swift in Sources */,
 				E8FE016126597809000A6CB2 /* RemoteLoaderTests.swift in Sources */,
