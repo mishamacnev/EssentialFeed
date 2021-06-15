@@ -40,28 +40,21 @@ class FeedUIIntegrationTests: XCTestCase {
     
     func test_loadFeedActions_requestFeedFromLoader() {
         let (sut, loader) = makeSUT()
+        XCTAssertEqual(loader.loadFeedCallCount, 0, "Expected no loading requests before view is loaded")
+        
         sut.loadViewIfNeeded()
-        loader.completeFeedLoading()
+        XCTAssertEqual(loader.loadFeedCallCount, 1, "Expected a loading request once view is loaded")
         
-        XCTAssertEqual(loader.loadMoreCallCount, 0, "Expected no requests until load more action")
+        sut.simulateUserInitiatedReload()
+        XCTAssertEqual(loader.loadFeedCallCount, 1, "Expected no request until previous compeletes")
         
-        sut.simulateLoadMoreFeedAction()
-        XCTAssertEqual(loader.loadMoreCallCount, 1, "Expected load more requests")
+        loader.completeFeedLoading(at: 0)
+        sut.simulateUserInitiatedReload()
+        XCTAssertEqual(loader.loadFeedCallCount, 2, "Expected another loading request once user initiates a reload")
         
-        sut.simulateLoadMoreFeedAction()
-        XCTAssertEqual(loader.loadMoreCallCount, 1, "Expected no requests while loading more")
-        
-        loader.completeLoadMore(lastPage: false, at: 0)
-        sut.simulateLoadMoreFeedAction()
-        XCTAssertEqual(loader.loadMoreCallCount, 2, "Expected request after load more completed with more pages")
-        
-        loader.completeLoadMoreWithError(at: 1)
-        sut.simulateLoadMoreFeedAction()
-        XCTAssertEqual(loader.loadMoreCallCount, 3, "Expected request after load more failure")
-        
-        loader.completeLoadMore(lastPage: true, at: 2)
-        sut.simulateLoadMoreFeedAction()
-        XCTAssertEqual(loader.loadMoreCallCount, 3, "Expected no request after loading all pages")
+        loader.completeFeedLoading(at: 1)
+        sut.simulateUserInitiatedReload()
+        XCTAssertEqual(loader.loadFeedCallCount, 3, "Expected yet another loading request once user initiates another reload")
     }
     
     func test_loadingFeedIndicator_isVisibleWhileLoadingFeed() {
@@ -179,16 +172,28 @@ class FeedUIIntegrationTests: XCTestCase {
     
     func test_loadMoreActions_requestMoreFromLoader() {
         let (sut, loader) = makeSUT()
-        XCTAssertEqual(loader.loadFeedCallCount, 0, "Expected no loading requests before view is loaded")
-        
         sut.loadViewIfNeeded()
-        XCTAssertEqual(loader.loadFeedCallCount, 1, "Expected a loading request once view is loaded")
+        loader.completeFeedLoading()
         
-        sut.simulateUserInitiatedReload()
-        XCTAssertEqual(loader.loadFeedCallCount, 2, "Expected another loading request once user initiates a reload")
+        XCTAssertEqual(loader.loadMoreCallCount, 0, "Expected no requests until load more action")
         
-        sut.simulateUserInitiatedReload()
-        XCTAssertEqual(loader.loadFeedCallCount, 3, "Expected yet another loading request once user initiates another reload")
+        sut.simulateLoadMoreFeedAction()
+        XCTAssertEqual(loader.loadMoreCallCount, 1, "Expected load more requests")
+        
+        sut.simulateLoadMoreFeedAction()
+        XCTAssertEqual(loader.loadMoreCallCount, 1, "Expected no requests while loading more")
+        
+        loader.completeLoadMore(lastPage: false, at: 0)
+        sut.simulateLoadMoreFeedAction()
+        XCTAssertEqual(loader.loadMoreCallCount, 2, "Expected request after load more completed with more pages")
+        
+        loader.completeLoadMoreWithError(at: 1)
+        sut.simulateLoadMoreFeedAction()
+        XCTAssertEqual(loader.loadMoreCallCount, 3, "Expected request after load more failure")
+        
+        loader.completeLoadMore(lastPage: true, at: 2)
+        sut.simulateLoadMoreFeedAction()
+        XCTAssertEqual(loader.loadMoreCallCount, 3, "Expected no request after loading all pages")
     }
     
     func test_loadingMoreIndicator_isVisibleWhileLoadingMore() {
@@ -459,6 +464,27 @@ class FeedUIIntegrationTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    func test_feedImageView_doesNotLoadImageAgainUntilPreviousRequestCompletes() {
+        let image = makeImage(url: URL(string: "http://url-0.com")!)
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading(with: [image])
+        
+        sut.simulateFeedImageViewVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [image.url], "Expected first request when near visible")
+        
+        sut.simulateFeedImageViewVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [image.url], "Expected no request until previous completes")
+        
+        loader.completeImageLoading(at: 0)
+        sut.simulateFeedImageViewVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [image.url, image.url], "Expected second request when visible after previous complete")
+        
+        sut.simulateFeedImageViewNotVisible(at: 0)
+        sut.simulateFeedImageViewVisible(at: 0)
+        XCTAssertEqual(loader.loadedImageURLs, [image.url, image.url, image.url], "Expected third request when visible after canceling previous request")
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
@@ -505,6 +531,7 @@ class FeedUIIntegrationTests: XCTestCase {
             feedRequests[index].send(Paginated(items: feed, loadMorePublisher: { [weak self] in
                 self?.loadMorePublisher() ?? Empty().eraseToAnyPublisher()
             }))
+            feedRequests[index].send(completion: .finished)
         }
         
         func completeFeedLoadingWithError(at index: Int = 0) {
